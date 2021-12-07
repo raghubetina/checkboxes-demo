@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all taggings
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new tagging
+    </h2>
+
+    <form action="/insert_tagging" method="post">
+      <div>
+        <label for="thing_id_box">
+          Thing
+        </label>
+
+        <input type="text" id="thing_id_box" name="query_thing_id">
+      </div>
+
+      <div>
+        <label for="tag_id_box">
+          Tag
+        </label>
+
+        <input type="text" id="tag_id_box" name="query_tag_id">
+      </div>
+
+      <button>
+        Create tagging
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Thing
+        </th>
+
+        <th>
+          Tag
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_taggings.each do |a_tagging| %>
+      <tr>
+        <td>
+          <%= a_tagging.id %>
+        </td>
+
+        <td>
+          <%= a_tagging.thing_id %>
+        </td>
+
+        <td>
+          <%= a_tagging.tag_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_tagging.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_tagging.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/taggings/<%= a_tagging.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,93 @@
+<div>
+  <div>
+    <h1>
+      List of all things
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new thing
+    </h2>
+
+    <form action="/insert_thing" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+
+        <% Tag.all.each do |tag| %>
+          <div>
+            <input type="checkbox" name="tags[]" value="<%= tag.id %>" id="tag_<%= tag.id %>">
+            <label for="tag_<%= tag.id %>"><%= tag.name %></label>
+          </div>
+        <% end %>
+      </div>
+
+      <button>
+        Create thing
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_things.each do |a_thing| %>
+      <tr>
+        <td>
+          <%= a_thing.id %>
+        </td>
+
+        <td>
+          <%= a_thing.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_thing.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_thing.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/things/<%= a_thing.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,78 @@
+<div>
+  <div>
+    <h1>
+      Thing #<%= @the_thing.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/things">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_thing/<%= @the_thing.id %>">
+          Delete thing
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_thing.name %>
+      </dd>
+
+      <dt>
+        Tags
+      </dt>
+      <dd>
+        <%= @the_thing.tags.pluck(:name).to_sentence %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_thing.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_thing.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit thing
+    </h2>
+
+    <form action="/modify_thing/<%= @the_thing.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_thing.name %>">
+      </div>
+
+      <button>
+        Update thing
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

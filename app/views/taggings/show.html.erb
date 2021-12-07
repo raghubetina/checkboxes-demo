@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Tagging #<%= @the_tagging.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/taggings">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_tagging/<%= @the_tagging.id %>">
+          Delete tagging
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Thing
+      </dt>
+      <dd>
+        <%= @the_tagging.thing_id %>
+      </dd>
+
+      <dt>
+        Tag
+      </dt>
+      <dd>
+        <%= @the_tagging.tag_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tagging.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tagging.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit tagging
+    </h2>
+
+    <form action="/modify_tagging/<%= @the_tagging.id %>"  method="post" >
+      <div>
+        <label for="thing_id_box">
+          Thing
+        </label>
+
+        <input type="text" id="thing_id_box" name="query_thing_id" value="<%= @the_tagging.thing_id %>">
+      </div>
+
+      <div>
+        <label for="tag_id_box">
+          Tag
+        </label>
+
+        <input type="text" id="tag_id_box" name="query_tag_id" value="<%= @the_tagging.tag_id %>">
+      </div>
+
+      <button>
+        Update tagging
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
